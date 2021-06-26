@@ -1,5 +1,7 @@
-package com.severSteel.InterviewTask.model;
+package com.severSteel.InterviewTask.api.response;
 
+import com.severSteel.InterviewTask.model.Product;
+import com.severSteel.InterviewTask.model.Supply;
 import lombok.*;
 
 import javax.persistence.*;

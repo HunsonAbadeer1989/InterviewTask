@@ -1,22 +1,19 @@
 package com.severSteel.InterviewTask.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.Embedded;
 import java.time.LocalDate;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class TotalSupplyParams {
+@ToString
+public class SupplyDTO {
 
     @JsonProperty("provider_name")
-    @Embedded
     private String providerName;
     @JsonProperty("date_of_supply")
     private LocalDate dateOfSupply;
@@ -24,7 +21,9 @@ public class TotalSupplyParams {
     private String productName;
     @JsonProperty("product_type")
     private String productType;
-    private double totalWeight;
-    private double totalPrice;
+    @JsonProperty("product_weight")
+    private double productWeight;
+    @JsonProperty("product_price")
+    private double productPrice;
 
 }
