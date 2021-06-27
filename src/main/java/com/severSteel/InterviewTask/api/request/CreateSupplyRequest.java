@@ -1,7 +1,7 @@
 package com.severSteel.InterviewTask.api.request;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.severSteel.InterviewTask.model.Product;
-import com.severSteel.InterviewTask.model.Provider;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +15,9 @@ import java.util.List;
 @Setter
 public class CreateSupplyRequest implements RequestApi {
 
-    private Provider provider;
+    @JsonProperty("provider_id")
+    private Long providerId;
+    @JsonProperty("products")
     private List<Product> productList;
 
 }

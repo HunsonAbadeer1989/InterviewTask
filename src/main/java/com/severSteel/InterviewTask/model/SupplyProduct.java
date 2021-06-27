@@ -1,4 +1,4 @@
-package com.severSteel.InterviewTask.api.response;
+package com.severSteel.InterviewTask.model;
 
 import com.severSteel.InterviewTask.model.Product;
 import com.severSteel.InterviewTask.model.Supply;

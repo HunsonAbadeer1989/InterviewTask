@@ -1,7 +1,7 @@
 package com.severSteel.InterviewTask.repository;
 
 import com.severSteel.InterviewTask.model.Supply;
-import com.severSteel.InterviewTask.model.TotalSupplyParams;
+import com.severSteel.InterviewTask.api.response.weightAndPriceDTO;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -14,13 +14,17 @@ import java.util.List;
 public interface SupplyRepository extends CrudRepository<Supply, Integer> {
 
     @Query(value =
-            "SELECT prov.name AS provider_name, s.date_of_supply, " +
-            "prod.name AS product_name, prod.type AS product_type, prod.weight, prod.price " +
+            "SELECT * FROM supply AS s WHERE (date_of_supply BETWEEN :start AND :end) ", nativeQuery = true)
+    List<Supply> getSuppliesBetweenDatePeriod(@Param("start") LocalDate start, @Param("end") LocalDate end);
+
+    @Query(value =
+            "SELECT " +
+            "SUM(prod.weight), SUM(prod.price) " +
             "FROM supply AS s " +
             "JOIN provider AS prov ON s.provider_id = prov.id " +
             "JOIN supply_product AS s_p ON s.id = s_p.supply_id " +
             "JOIN product AS prod ON s_p.product_id = prod.id " +
-            "WHERE (date_of_supply BETWEEN start AND end) ", nativeQuery = true)
-    List<TotalSupplyParams> getSuppliesBetweenDatePeriod(@Param("start") LocalDate start, @Param("end") LocalDate end);
-
+            "WHERE (date_of_supply BETWEEN :start AND :end) " +
+            "GROUP BY prod.weight ", nativeQuery = true)
+    weightAndPriceDTO getTotalWeightAndPrice(@Param("start") LocalDate start, @Param("end") LocalDate end);
 }

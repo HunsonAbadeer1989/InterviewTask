@@ -1,4 +1,4 @@
-package com.severSteel.InterviewTask.model;
+package com.severSteel.InterviewTask.api.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -10,7 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class TotalWeightAndPrice {
+public class weightAndPriceDTO {
 
     @JsonProperty("weight_sum")
     private double weightSum;

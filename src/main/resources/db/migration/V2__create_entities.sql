@@ -10,7 +10,8 @@ INSERT INTO supply (id, provider_id, date_of_supply)
     VALUES (1, 1, "2021-06-21"),
            (2, 1, "2021-05-10"),
            (3, 2, "2021-07-21"),
-           (4, 3, "2021-01-30");
+           (4, 3, "2021-01-30"),
+           (5, 1, "2021-06-21");
 
 INSERT INTO supply_product (supply_id, product_id)
-    VALUES (1, 1), (2, 3), (3, 4), (4, 3);
+    VALUES (1, 1), (2, 3), (3, 4), (4, 3), (5, 1);
